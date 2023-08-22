@@ -1,2 +1,2 @@
-# Inter_User-Classification
-(intership) NLP 
+# 微博发声人鉴别
+（实习）自然语言处理
