@@ -156,38 +156,6 @@ class TrainDataset(Dataset):
                                     shuffle=False,num_workers=0,pin_memory=True)
         
         return train_loader, val_loader, test_loader
-
-
-class PredictionDataset(TrainDataset):
-    '''
-    用于预测的数据集构造操作
-    '''
-    def __init__(self, input_ids_tensor, attention_mask_tensor):
-        self.input_ids_tensor = input_ids_tensor
-        self.attention_mask_tensor = attention_mask_tensor
-        
-    def __len__(self):
-        return len(self.input_ids_tensor)
-    
-    def __getitem__(self, idx):
-        input_ids = self.input_ids_tensor[idx]
-        attention_mask = self.attention_mask_tensor[idx]
-        return input_ids, attention_mask
-    
-    def prepare_dataloaders(self, batch_size):
-        '''
-        参数:
-        text_save_path:词张量字典储存路径
-        batch_size:略
-
-        功能:根据输入读取词张量，生成并返回数据加载器
-        '''
-
-        dataset = TensorDataset(self.input_ids_tensor, self.attention_mask_tensor)
-        predict_loader = DataLoader(dataset,batch_size,
-                                       shuffle=True,num_workers=0,pin_memory=True)
-        
-        return predict_loader
     
 
 #已完成-----------------------------------------------------------------------------------------------------------------------------
@@ -245,7 +213,7 @@ class Trainer:
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.model.to(self.device)
 
-    def train_epoch(self):
+    def train_epoch(self,epoch):
         self.model.train()
         total_loss = 0.0
         correct = 0
@@ -298,7 +266,7 @@ class Trainer:
     def train(self):
         for epoch in range(self.epoches):
             start = time.time()
-            train_loss, train_acc = self.train_epoch()
+            train_loss, train_acc = self.train_epoch(epoch)
             val_loss, val_acc = self.validation()
             lr = self.optimizer.param_groups[0]['lr']
             
@@ -372,11 +340,12 @@ class ModelEvaluator:
             else:
                 print('Accuracy of %5s : No samples in the test set' % (classes[i]))
 
+
 class Prediction:
     def __init__(self, model, model_path):
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.model = model.to(self.device)
-        self.model.load_state_dict(torch.load(model_path))
+        model.load_state_dict(torch.load(model_path))
         self.model.eval()
 
     def predict(self, unlabeled_data_loader):
