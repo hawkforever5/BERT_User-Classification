@@ -372,4 +372,53 @@ class ModelEvaluator:
             else:
                 print('Accuracy of %5s : No samples in the test set' % (classes[i]))
 
+class Prediction:
+    def __init__(self, model, model_path):
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        self.model = model.to(self.device)
+        self.model.load_state_dict(torch.load(model_path))
+        self.model.eval()
 
+    def predict(self, unlabeled_data_loader):
+        predictions = []
+        with torch.no_grad():
+            for input_ids, attention_mask in unlabeled_data_loader:
+                input_ids, attention_mask = input_ids.to(self.device), attention_mask.to(self.device)
+                outputs = self.model(input_ids, attention_mask)
+                _, predicted = torch.max(outputs.data, 1)
+                predictions.extend(predicted.cpu().numpy())
+        return predictions
+    
+
+class PredictionDataset(TrainDataset):
+    '''
+    用于预测的数据集构造操作
+    '''
+    def __init__(self, input_ids_tensor, attention_mask_tensor):
+        self.input_ids_tensor = input_ids_tensor
+        self.attention_mask_tensor = attention_mask_tensor
+        
+    def __len__(self):
+        return len(self.input_ids_tensor)
+    
+    def __getitem__(self, idx):
+        input_ids = self.input_ids_tensor[idx]
+        attention_mask = self.attention_mask_tensor[idx]
+        return input_ids, attention_mask
+    
+    def prepare_dataloader(self, batch_size):
+        '''
+        参数:
+        text_save_path:词张量字典储存路径
+        batch_size:略
+
+        功能:根据输入读取词张量，生成并返回数据加载器
+        '''
+
+        dataset = TensorDataset(self.input_ids_tensor, self.attention_mask_tensor)
+
+        predict_loader = DataLoader(dataset,batch_size,
+                                       shuffle=True,num_workers=0,pin_memory=True)
+        
+        return predict_loader
+    
