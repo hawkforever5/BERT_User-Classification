@@ -1,3 +1,3 @@
-# Inter_User-Classification
+# BERT_User-Classification
 
 (intership) NLP
