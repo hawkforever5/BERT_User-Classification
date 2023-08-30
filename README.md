@@ -64,8 +64,8 @@
 
 实验结果：
 
-![result. size_of_data](./pic/result. size_of_data.png)
-
+[![result. size_of_data](./pic/result. size_of_data.png)
+](https://github.com/hawkforever5/BERT_User-Classification/blob/main/pic/result.%20size_of_data.png?raw=true)
 修改 Config字典：'model_save_path': 'size_of_data.pth'
 
 ### 三、小数据十分类（small_data_10）
