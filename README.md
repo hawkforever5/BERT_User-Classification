@@ -63,6 +63,7 @@
 ```
 
 实验结果：
+
 ![image](https://github.com/hawkforever5/BERT_User-Classification/assets/110030382/628c4716-dd42-41f5-acdf-b9fa3457990f)
 
 修改 Config字典：'model_save_path': 'size_of_data.pth'
@@ -72,8 +73,7 @@
 分出小数据后，直接进行10分类。
 
 ```python
-基![Uploading image.png…]()
-层组织
+基层组织
 演艺娱乐明星
 赛事活动
 公务员
@@ -87,7 +87,8 @@
 
 实验结果：
 
-![result. small_data_10](./pic/result. small_data_10.png)
+![image](https://github.com/hawkforever5/BERT_User-Classification/assets/110030382/51e60f3f-2361-4cea-a67b-7039c0c80332)
+
 
 ## 四、内积离群数据（distinctive_data）
 
