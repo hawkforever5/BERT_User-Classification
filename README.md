@@ -62,7 +62,7 @@
 |   **政协人大**   |
 |   **国防军委**   |
 
-- 实验结果：
+- 实验结果：{'大数据': 0, '小数据': 1}
 
 
 ![image](https://github.com/hawkforever5/BERT_User-Classification/assets/110030382/628c4716-dd42-41f5-acdf-b9fa3457990f)
@@ -71,7 +71,7 @@
 
 修改 Config字典：'model_save_path': 'small_data_10.pth'
 
-分出小数据后，直接进行10分类。
+分出小数据后，直接进行10分类。{'公务员': 0, '国防军委': 1, '基层组织': 2, '检验检测': 3, '赛事活动': 4, '外国政府机构': 5, '行业专家': 6, '研究机构': 7, '演艺娱乐明星': 8, '政协人大': 9}
 
 |   **基层组织**   |
 | :--------------: |
@@ -95,7 +95,7 @@
 
 ## 对于大数据
 
-直接对大数据进行12分类
+直接对大数据进行12分类{'超话粉丝大咖': 0, '大V名人': 1, '党委': 2, '政府': 3, '媒体': 4, '企事业单位': 5, '社会组织': 6, '社区组织': 7, '司法机关': 8, '网民': 9, '学校': 10, '自媒体': 11}
 
 ![截屏2023-08-31 10.33.30](/Users/hawk/Desktop/small_data.png)
 
@@ -104,6 +104,10 @@
 ## 对于数据在特征空间的离散程度分类
 
 修改 Config字典：'model_save_path': 'similar_distinctive.pth'
+
+```
+{'distinctive': 0, 'similar': 1}
+```
 
 ![截屏2023-08-31 11.32.01](/Users/hawk/Desktop/similar_distinctive.png)
 
@@ -114,19 +118,30 @@
 
 大数据类中，个别标签在特征空间中具有明显的区分度，向量内积优秀，故可直接进行n+1分类将其解决。
 
+{'超话粉丝大咖': 0, '政府': 1, '社会组织': 2, '社区组织': 3, '司法机关': 4, '学校': 5}
+
 ![截屏2023-08-31 11.51.45](/Users/hawk/Desktop/distinctive_data.png)
 
 
 
-## similar直接分
+## similar直接分{'大V名人': 0, '党委': 1, '媒体': 2, '企事业单位': 3, '网民': 4, '自媒体': 5}
 
 ![similar 直接分](/Users/hawk/Desktop/similar 直接分.png)
 
-## similar-first
+## similar-first{'其他': 0, '党委': 1}
 
 分出党委![similar-first](/Users/hawk/Desktop/similar-first.png)
 
 
 
-## similar-second
+## similar-second{'其他': 0, '分出网友+自媒体': 1}
 
+分出网友+自媒体
+
+![网友自媒体其他](/Users/hawk/Desktop/网友自媒体其他.png)
+
+
+
+## 最后3分类{'大V名人': 0, '媒体': 1, '企事业单位': 2}
+
+![最后3分类](/Users/hawk/Desktop/最后3分类.png)
