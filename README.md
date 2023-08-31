@@ -25,7 +25,9 @@
 
 - **'明星红人', '民主党派'**两类标签对应的数据过少，不适宜放入模型训练，故需用规则剔除。
 
-### 二、按训练集尺寸进行二分类（size_of_data）
+### 二、按训练集规模进行二分类（size_of_data）
+
+修改 Config字典：'model_save_path': 'size_of_data.pth'
 
 - 训练集的各标签的数据规模不统一，经实验发现，这在反向传播的过程中会误导模型对参数的调整，导致模型只追求整体分类效果而忽略各标签的分类效果，故应以各标签的数据量为依据，将数据集分为大小数据集分开训练，实验证明，此方法对效果有明显的改善。
 
@@ -65,9 +67,9 @@
 
 ![image](https://github.com/hawkforever5/BERT_User-Classification/assets/110030382/628c4716-dd42-41f5-acdf-b9fa3457990f)
 
-修改 Config字典：'model_save_path': 'size_of_data.pth'
-
 ### 三、小数据十分类（small_data_10）
+
+修改 Config字典：'model_save_path': 'small_data_10.pth'
 
 分出小数据后，直接进行10分类。
 
@@ -88,7 +90,29 @@
 ![image](https://github.com/hawkforever5/BERT_User-Classification/assets/110030382/51e60f3f-2361-4cea-a67b-7039c0c80332)
 
 
+
+
+
+## 对于大数据
+
+直接对大数据进行12分类
+
+![截屏2023-08-31 10.33.30](/Users/hawk/Library/Application Support/typora-user-images/截屏2023-08-31 10.33.30.png)
+
+
+
+## 对于数据在特征空间的离散程度分类
+
+修改 Config字典：'model_save_path': 'similar_distinctive.pth'
+
+![截屏2023-08-31 11.32.01](/Users/hawk/Library/Application Support/typora-user-images/截屏2023-08-31 11.32.01.png)
+
+
 ## 四、内积离群数据（distinctive_data）
 
+修改 Config字典：'model_save_path': 'distinctive_data.pth'
+
 大数据类中，个别标签在特征空间中具有明显的区分度，向量内积优秀，故可直接进行n+1分类将其解决。
+
+![截屏2023-08-31 11.51.45](/Users/hawk/Library/Application Support/typora-user-images/截屏2023-08-31 11.51.45.png)
 
