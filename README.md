@@ -97,7 +97,7 @@
 
 直接对大数据进行12分类
 
-![截屏2023-08-31 10.33.30](/Users/hawk/Library/Application Support/typora-user-images/截屏2023-08-31 10.33.30.png)
+![截屏2023-08-31 10.33.30](/Users/hawk/Desktop/small_data.png)
 
 
 
@@ -105,7 +105,7 @@
 
 修改 Config字典：'model_save_path': 'similar_distinctive.pth'
 
-![截屏2023-08-31 11.32.01](/Users/hawk/Library/Application Support/typora-user-images/截屏2023-08-31 11.32.01.png)
+![截屏2023-08-31 11.32.01](/Users/hawk/Desktop/similar_distinctive.png)
 
 
 ## 四、内积离群数据（distinctive_data）
@@ -114,5 +114,19 @@
 
 大数据类中，个别标签在特征空间中具有明显的区分度，向量内积优秀，故可直接进行n+1分类将其解决。
 
-![截屏2023-08-31 11.51.45](/Users/hawk/Library/Application Support/typora-user-images/截屏2023-08-31 11.51.45.png)
+![截屏2023-08-31 11.51.45](/Users/hawk/Desktop/distinctive_data.png)
+
+
+
+## similar直接分
+
+![similar 直接分](/Users/hawk/Desktop/similar 直接分.png)
+
+## similar-first
+
+分出党委![similar-first](/Users/hawk/Desktop/similar-first.png)
+
+
+
+## similar-second
 
