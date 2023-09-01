@@ -158,7 +158,6 @@ class TrainDataset(Dataset):
         return train_loader, val_loader, test_loader
     
 
-#已完成-----------------------------------------------------------------------------------------------------------------------------
 class BERTVectorizer(nn.Module):
     def __init__(self, model_name, num_classes, device):
         super(BERTVectorizer, self).__init__()
@@ -197,9 +196,8 @@ class CNNVectorizer():
         logits = self.classifier(conv_output)
         return logits
 
-#待修改-----------------------------------------------------------------------------------------------------------------------------
 
-class Trainer:
+class Trainer():
     def __init__(self, model, train_loader, val_loader, optimizer, criterion, scheduler, epoches, model_save_path, device):
         self.model = model
         self.train_loader = train_loader
@@ -278,15 +276,14 @@ class Trainer:
             print('Epoch [{}/{}] Train Loss: {:.6f} Train Acc: {:.2f} Val Loss: {:.6f} Val Acc: {:.2f} Learning Rate: {:.6f}'.format(
                 epoch + 1, self.epoches, train_loss, train_acc, val_loss, val_acc, lr))
 
-            self.scheduler.step(val_acc)  # Pass validation accuracy to the scheduler
+            self.scheduler.step(val_acc) 
             end = time.time()
             time_taken = end - start
             m, s = divmod(int(time_taken), 60)
             print('\tTime: {:02d}:{:02d}'.format(m, s))
 
 
-# ----------------------------------------------------------------------------------------------------------------------------
-class ModelEvaluator:
+class ModelEvaluator():
     def __init__(self, model, test_loader, label_mapping, device):
         self.model = model
         self.test_loader = test_loader
@@ -341,7 +338,7 @@ class ModelEvaluator:
                 print('Accuracy of %5s : No samples in the test set' % (classes[i]))
 
 
-class Prediction:
+class Prediction():
     def __init__(self, model, model_path, device):
         self.device = torch.device(device)
         self.model = model.to(self.device)
