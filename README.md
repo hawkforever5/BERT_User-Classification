@@ -8,7 +8,7 @@
 
 |                             章节                             |            描述            |
 | :----------------------------------------------------------: | :------------------------: |
-|    [简介](https://github.com/ymcui/Chinese-BERT-wwm#简介)    |    介绍本项目的基本信息    |
+| [简介](https://github.com/hawkforever5/BERT_User-Classification#简介) |    介绍本项目的基本信息    |
 | [数据分析](https://github.com/hawkforever5/BERT_User-Classification#对于数据的分析) |     对标记数据进行分析     |
 | [环境配置](https://github.com/hawkforever5/BERT_User-Classification#对于数据的分析) |      python和第三方库      |
 | [工具包](https://github.com/hawkforever5/BERT_User-Classification#工具包) | 项目过程中的自制工具包解析 |
@@ -29,6 +29,10 @@
 - 剔除极端数据('明星红人', '民主党派')共有22类。
 
 - 可利用信息包括昵称、关注数、粉丝数、微博数、认证信息、博主标记、简介、工作信息、标签和其他，其中3项为整型数据，6项为字符型数据。
+
+## 环境配置
+
+待完善
 
 ## 工具包
 
