@@ -15,7 +15,7 @@
 |                             章节                             |            描述            |
 | :----------------------------------------------------------: | :------------------------: |
 | [数据分析](https://github.com/hawkforever5/BERT_User-Classification#对于数据的分析) |     对标记数据进行分析     |
-| [工具包](https://github.com/hawkforever5/BERT_User-Classification#实验步骤) |         自制工具包         |
+| [工具包](https://github.com/hawkforever5/BERT_User-Classification#工具包) |         自制工具包         |
 | [实验步骤](https://github.com/hawkforever5/BERT_User-Classification#实验步骤) | 简述实验过程并展示实验结果 |
 |                                                              |                            |
 
